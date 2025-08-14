@@ -1,0 +1,54 @@
+baseURL = "https://people.ubuntu.com/~r41k0u/portfolio/"
+languageCode = "en-us"
+title = "Pragyansh Chaturvedi"
+theme = "digitalgarden"
+
+googleAnalytics = "UA-PROPERTY_ID"
+
+[Params]
+  description = "My digital portfolio / blog"
+  enableSearch = true
+
+[menu]
+[[menu.main]]
+  name = 'Home'
+  url = '/'
+  weight = 1
+[[menu.main]]
+  name = 'Content'
+  params.header = true
+  weight = 2
+[[menu.main]]
+  name = 'Blog'
+  url = '/blog'
+  weight = 3
+[[menu.main]]
+  name = 'Resume'
+  url = '/resume.pdf'
+  weight = 4
+
+[[menu.social]]
+  name = 'Twitter'
+  url = 'https://twitter.com'
+  weight = 1
+[[menu.social]]
+  name = 'GitHub'
+  url = 'https://github.com/r41k0u'
+  weight = 2
+[[menu.social]]
+  name = 'LinkedIn'
+  url = 'https://linkedin.com/in/r41k0u'
+  weight = 3
+[[menu.social]]
+  name = 'Email'
+  url = 'mailto:pragyanshchaturvedi18@gmail.com'
+  weight = 8
+
+
+# syntax highlight settings
+[markup]
+  [markup.highlight]
+    style = "dracula"
+  [markup.goldmark.renderer]
+    # Enable to include inline HTML
+    unsafe = true
