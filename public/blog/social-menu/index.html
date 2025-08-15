@@ -204,15 +204,158 @@ Twitter GitHub LinkedIn Instagram Mastodon Dribbble Codepen Twitch Email RSS →
 </svg></button>
 <div class="flex-1 max-w-full">
 
-<main class="h-screen overflow-y-auto">
-  <div class="px-6 py-20 w-full lg:w-[580px] mx-auto prose dark:prose-invert h-fit prose-img:mx-auto">
 
-    <h1>4. Social Menu</h1>
-    
-    <p class="text-sm text-slate-500 !mb-8">December 18, 2021</p>
-    
 
-    <p>The social menu can be used to configure all the social icons in the sidebar. Add links to your social media in the website config to show the icons.</p>
+
+
+<div class="flex h-screen relative">
+
+  <section
+    class="will-change-transform transform transition-transform -translate-x-[200%] absolute top-0 left-0 lg:relative
+  lg:translate-x-0 lg:min-w-[400px] lg:w-1/4 h-full bg-slate-50 dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 lg:flex flex-col py-3 overflow-y-auto scroll-area">
+    
+    
+    <a href="http://localhost:1313/~r41k0u/portfolio/blog/">
+      <h2 class="font-bold mb-5 py-1 pl-12 pr-3 md:px-3">Blog</h2>
+    </a>
+<label class="mb-2 block px-2">
+  <span></span>
+  <input type="text" placeholder="Search articles" class="searchInput bg-white rounded px-2 py-1 w-full border" />
+</label>
+<script>
+  const searchElt = document.querySelector('.searchInput')
+  if (searchElt) {
+    searchElt.addEventListener('input', evt => {
+      const value = evt.target.value || '';
+
+      const articles = document.querySelectorAll('.article')
+      if (!value) {
+        articles.forEach(article => article.classList.remove('hidden'))
+      } else {
+        articles.forEach(article => article.classList.add('hidden'))
+        Array.from(articles).filter(article => {
+          const title = article.querySelector('h3')
+          if (!title) return false;
+
+          return title.textContent.toLowerCase().includes(value.toLowerCase())
+        }).forEach(article => article.classList.remove('hidden'))
+      }
+    })
+  }
+</script>
+<div class="space-y-2.5">
+      
+      <a class="article block px-3 py-4  hover:bg-slate-200 dark:hover:bg-slate-700 "
+        href="/~r41k0u/portfolio/blog/cam_mod/">
+        
+        
+        <h3 class="text-lg font-semibold mb-0.5">Using camera modules on a Raspberry Pi running Ubuntu 25.04 (Plucky Puffin)</h3>
+        <div
+          class="text-sm  text-slate-500 dark:text-slate-400  line-clamp-2">
+          With the release of Ubuntu 25.04 Plucky Puffin, the camera stack now works on a Raspberry Pi running Ubuntu. The main changes were adding the new PiSP driver to libcamera and adding the rpicam-apps and picamera2 userland packages (along with their dependencies).
+We also tried to support IMX500&rsquo;s (Raspberry Pi AI camera) AI features (except the Hailo preprocessing models), but that comes with a catch described later.
+We have made the usage of the camera stack as close to Raspberry Pi OS as possible, so you can use your existing setup and scripts and run them on Ubuntu as is.
+        </div>
+      </a>
+      
+      <a class="article block px-3 py-4  hover:bg-slate-200 dark:hover:bg-slate-700 "
+        href="/~r41k0u/portfolio/blog/structure/">
+        
+        
+        <h3 class="text-lg font-semibold mb-0.5">2. Structure</h3>
+        <div
+          class="text-sm  text-slate-500 dark:text-slate-400  line-clamp-2">
+          Understand the structure of the theme&rsquo;s setup to create content for your website.
+Theme&rsquo;s content structure . ├── ... ├── content # Hosts all Markdown content │ ├── articles # Contains the list of markdown files for notes/posts │ │ ├── article-1.md │ │ ├── article-2.md │ │ └── article-3.md │ └── portfolio # List of portfolio projects or case studies │ ├── project-1.md │ └── project-2.md ├── data # Test files (alternatively `spec` or `tests`) │ └── stack.
+        </div>
+      </a>
+      
+      <a class="article block px-3 py-4  hover:bg-slate-200 dark:hover:bg-slate-700 "
+        href="/~r41k0u/portfolio/blog/primary-menu/">
+        
+        
+        <h3 class="text-lg font-semibold mb-0.5">3. Primary Menu</h3>
+        <div
+          class="text-sm  text-slate-500 dark:text-slate-400  line-clamp-2">
+          The sidebar of the theme uses the main menu. Add all the items for your sidebar navigation in this menu.
+// config.toml
+[menu] [[menu.main]] name = &#39;Home&#39; url = &#39;/&#39; weight = 1 [[menu.main]] name = &#39;Content&#39; params.header = true weight = 2 [[menu.main]] name = &#39;Articles&#39; url = &#39;/articles&#39; weight = 3 name → Title of the menu item url → Path to navigate weight → Used to decide the order of menu items params.
+        </div>
+      </a>
+      
+      <a class="article block px-3 py-4  bg-slate-900 dark:bg-slate-700 text-slate-50 "
+        href="/~r41k0u/portfolio/blog/social-menu/">
+        
+        
+        <h3 class="text-lg font-semibold mb-0.5">4. Social Menu</h3>
+        <div
+          class="text-sm  text-slate-400  line-clamp-2">
+          The social menu can be used to configure all the social icons in the sidebar. Add links to your social media in the website config to show the icons.
+[[menu.social]] name = &#39;Twitter&#39; url = &#39;https://twitter.com&#39; weight = 1 The name of the social menu needs to be unique and should be one of the supported values.
+Supported values for the social menu item name:
+Twitter GitHub LinkedIn Instagram Mastodon Dribbble Codepen Twitch Email RSS → Configure newsletter
+        </div>
+      </a>
+      
+      <a class="article block px-3 py-4  hover:bg-slate-200 dark:hover:bg-slate-700 "
+        href="/~r41k0u/portfolio/blog/newsletter/">
+        
+        
+        <h3 class="text-lg font-semibold mb-0.5">5. Newsletter</h3>
+        <div
+          class="text-sm  text-slate-500 dark:text-slate-400  line-clamp-2">
+          The theme supports a subscription to multiple newsletter providers.
+Buttondown Substack Revue Buttondown [Params.newsletter.provider] = &ldquo;buttondown&rdquo;
+Copy the action url from your buttondown admin dashboard and add it to [Params.newsletter.path] in config.toml
+Substack [Params.newsletter.provider] = &ldquo;substack&rdquo;
+Setting up substack is the easiest. Just add your substack newsletter URL (applicable for custom domains also) to [Params.newsletter.path] in config.toml
+Note that since substack doesn&rsquo;t have a native API for subscription. The theme uses the api from substackapi.
+        </div>
+      </a>
+      
+      <a class="article block px-3 py-4  hover:bg-slate-200 dark:hover:bg-slate-700 "
+        href="/~r41k0u/portfolio/blog/google-analytics/">
+        
+        
+        <h3 class="text-lg font-semibold mb-0.5">6. Google Analytics</h3>
+        <div
+          class="text-sm  text-slate-500 dark:text-slate-400  line-clamp-2">
+          Digital garden theme utilizes the Hugo&rsquo;s [internal template](internal templates) for Google analytics and so both Google analytics v3 and GA v4 (gtag) are supported.
+Add your UA-PROPERTY_ID or G-MEASUREMENT_ID to config.toml
+Google Analytics v3 (analytics.js) googleAnalytics = &#39;UA-PROPERTY_ID&#39; Google Analytics v4 (gtag.js) googleAnalytics = &#39;G-MEASUREMENT_ID&#39; → Configure Metatags
+        </div>
+      </a>
+      
+      <a class="article block px-3 py-4  hover:bg-slate-200 dark:hover:bg-slate-700 "
+        href="/~r41k0u/portfolio/blog/metatags/">
+        
+        
+        <h3 class="text-lg font-semibold mb-0.5">7. Metatags</h3>
+        <div
+          class="text-sm  text-slate-500 dark:text-slate-400  line-clamp-2">
+          Metatags are used to provide additional information about the page, usually used by search engines and social media websites / apps. It allows to customize your page&rsquo;s title, description, preview image and more.
+Configure default tags // config.toml
+title = &#34;Personal Digital Garden&#34; [Params] description = &#34;My Digital Garden on the Internet&#34; images = [&#39;/digital-garden-logo.png&#39;] Setting the above values will be used as default for all pages unless its overridden in a specific page&rsquo;s markdown.
+        </div>
+      </a>
+      </div>
+    </section>
+
+  <div class="overflow-y-auto h-screen w-full">
+    <article class="px-6 py-20 w-full mx-auto prose lg:prose-lg h-fit dark:prose-invert prose-img:mx-auto">
+
+      
+      <h1 class="!mb-2">4. Social Menu</h1>
+
+	  
+      <p class="text-sm text-slate-500 !mb-8"> Planted December 18, 2021
+		
+	  </p>
+      
+
+      
+
+      <p>The social menu can be used to configure all the social icons in the sidebar. Add links to your social media in the website config to show the icons.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[[menu.social]]
 </span></span><span style="display:flex;"><span>  name = <span style="color:#f1fa8c">&#39;Twitter&#39;</span>
 </span></span><span style="display:flex;"><span>  url = <span style="color:#f1fa8c">&#39;https://twitter.com&#39;</span>
@@ -233,8 +376,10 @@ Twitter GitHub LinkedIn Instagram Mastodon Dribbble Codepen Twitch Email RSS →
 </ul>
 <p>→ <a href="/articles/newsletter" >Configure newsletter</a></p>
 
+    </article>
   </div>
-</main>
+
+</div>
 
 
   </div>

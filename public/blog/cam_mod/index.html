@@ -199,15 +199,77 @@ We have made the usage of the camera stack as close to Raspberry Pi OS as possib
 </svg></button>
 <div class="flex-1 max-w-full">
 
-<main class="h-screen overflow-y-auto">
-  <div class="px-6 py-20 w-full lg:w-[580px] mx-auto prose dark:prose-invert h-fit prose-img:mx-auto">
 
-    <h1>Using camera modules on a Raspberry Pi running Ubuntu 25.04 (Plucky Puffin)</h1>
-    
-    <p class="text-sm text-slate-500 !mb-8">April 23, 2025</p>
-    
 
-    <p>With the release of Ubuntu 25.04 Plucky Puffin, the camera stack now works on a Raspberry Pi running Ubuntu. The main changes were adding the new PiSP driver to <code>libcamera</code> and adding the <code>rpicam-apps</code> and <code>picamera2</code> userland packages (along with their dependencies).</p>
+
+
+<div class="flex h-screen relative">
+
+  <section
+    class="will-change-transform transform transition-transform -translate-x-[200%] absolute top-0 left-0 lg:relative
+  lg:translate-x-0 lg:min-w-[400px] lg:w-1/4 h-full bg-slate-50 dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 lg:flex flex-col py-3 overflow-y-auto scroll-area">
+    
+    
+    <a href="http://localhost:1313/~r41k0u/portfolio/blog/">
+      <h2 class="font-bold mb-5 py-1 pl-12 pr-3 md:px-3">Blog</h2>
+    </a>
+<label class="mb-2 block px-2">
+  <span></span>
+  <input type="text" placeholder="Search articles" class="searchInput bg-white rounded px-2 py-1 w-full border" />
+</label>
+<script>
+  const searchElt = document.querySelector('.searchInput')
+  if (searchElt) {
+    searchElt.addEventListener('input', evt => {
+      const value = evt.target.value || '';
+
+      const articles = document.querySelectorAll('.article')
+      if (!value) {
+        articles.forEach(article => article.classList.remove('hidden'))
+      } else {
+        articles.forEach(article => article.classList.add('hidden'))
+        Array.from(articles).filter(article => {
+          const title = article.querySelector('h3')
+          if (!title) return false;
+
+          return title.textContent.toLowerCase().includes(value.toLowerCase())
+        }).forEach(article => article.classList.remove('hidden'))
+      }
+    })
+  }
+</script>
+<div class="space-y-2.5">
+      
+      <a class="article block px-3 py-4  bg-slate-900 dark:bg-slate-700 text-slate-50 "
+        href="/~r41k0u/portfolio/blog/cam_mod/">
+        
+        
+        <h3 class="text-lg font-semibold mb-0.5">Using camera modules on a Raspberry Pi running Ubuntu 25.04 (Plucky Puffin)</h3>
+        <div
+          class="text-sm  text-slate-400  line-clamp-2">
+          With the release of Ubuntu 25.04 Plucky Puffin, the camera stack now works on a Raspberry Pi running Ubuntu. The main changes were adding the new PiSP driver to libcamera and adding the rpicam-apps and picamera2 userland packages (along with their dependencies).
+We also tried to support IMX500&rsquo;s (Raspberry Pi AI camera) AI features (except the Hailo preprocessing models), but that comes with a catch described later.
+We have made the usage of the camera stack as close to Raspberry Pi OS as possible, so you can use your existing setup and scripts and run them on Ubuntu as is.
+        </div>
+      </a>
+      </div>
+    </section>
+
+  <div class="overflow-y-auto h-screen w-full">
+    <article class="px-6 py-20 w-full mx-auto prose lg:prose-lg h-fit dark:prose-invert prose-img:mx-auto">
+
+      
+      <h1 class="!mb-2">Using camera modules on a Raspberry Pi running Ubuntu 25.04 (Plucky Puffin)</h1>
+
+	  
+      <p class="text-sm text-slate-500 !mb-8"> Planted April 23, 2025
+		
+	  </p>
+      
+
+      
+
+      <p>With the release of Ubuntu 25.04 Plucky Puffin, the camera stack now works on a Raspberry Pi running Ubuntu. The main changes were adding the new PiSP driver to <code>libcamera</code> and adding the <code>rpicam-apps</code> and <code>picamera2</code> userland packages (along with their dependencies).</p>
 <p>We also tried to support IMX500&rsquo;s (Raspberry Pi AI camera) AI features (except the Hailo preprocessing models), but that comes with a catch described later.</p>
 <p>We have made the usage of the camera stack as close to Raspberry Pi OS as possible, so you can use your existing setup and scripts and run them on Ubuntu as is.</p>
 <p><img src="https://i.imgur.com/VgVzS3W.png" alt="This is an image I took after making changes to libcamera using qcam"></p>
@@ -222,8 +284,10 @@ We have made the usage of the camera stack as close to Raspberry Pi OS as possib
 <p>However, as this is a deb package, you can manually install the <code>.deb</code> package and then proceed to install the packages from <a href="https://launchpad.net/~r41k0u/&#43;archive/ubuntu/imx500-picam"  target="_blank" rel="noopener" >this PPA</a>, and it should work. The steps are mentioned at the end of the <a href="https://canonical-ubuntu-boards.readthedocs-hosted.com/en/latest/how-to/rpi-camera/"  target="_blank" rel="noopener" >Ubuntu Boards Documentation</a></p>
 <p>But again, this is just a workaround, which we don&rsquo;t want our end users to do. We hope that this gets resolved and we can provide the packages (with their AI camera features) in the Ubuntu archive for the next release (This helps us with achieving parity with Raspberry Pi&rsquo;s documentation, and the end users can use most of their stuff &ldquo;as-is&rdquo; between Raspberry Pi OS and Ubuntu).</p>
 
+    </article>
   </div>
-</main>
+
+</div>
 
 
   </div>

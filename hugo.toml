@@ -3,8 +3,6 @@ languageCode = "en-us"
 title = "Pragyansh Chaturvedi"
 theme = "digitalgarden"
 
-googleAnalytics = "UA-PROPERTY_ID"
-
 [Params]
   description = "My digital portfolio / blog"
   enableSearch = true
